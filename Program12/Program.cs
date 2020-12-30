@@ -10,16 +10,18 @@ namespace Program12
     {
         static void Main(string[] args)
         {
-            string path = @"C:\Users\1392659\Desktop\test1\12.txt";//path where the file was created
+            string path = @"C:\Users\1392659\Desktop\test1\input.txt";//path where the file was created
+            string path_output = @"C:\Users\1392659\Desktop\test1\output.txt";
             using (StreamWriter sw = new StreamWriter(path, true)) //math instruction
             {
-                sw.WriteLine(3.1);//
+                sw.WriteLine(3.1);
                 sw.WriteLine("+");
                 sw.WriteLine(2.3);
             };
             double a;
             string operation;
             double b;
+            double output = 0;
 
             using (StreamReader sr = new StreamReader(path, true))//reading information from a file
             {
@@ -30,18 +32,22 @@ namespace Program12
             switch (operation)//choosing the right solution
             {
                 case "+":
-                    Console.WriteLine(a + b);
+                    output = (a + b);
                     break;
                 case "-":
-                    Console.WriteLine(a - b);
+                    output = (a - b);
                     break;
                 case "*":
-                    Console.WriteLine(a * b);
+                    output = (a * b);
                     break;
                 case "/":
-                    Console.WriteLine(a / b);
+                    output = (a / b);
                     break;
             }
+            using (StreamWriter sw = new StreamWriter(path_output, true)) 
+            {
+                sw.WriteLine(output);
+            };
             File.Delete(path);//it is necessary to delete the file so that there are no errors when replaying the code
         }
     }
